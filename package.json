@@ -1,0 +1,37 @@
+{
+  "name": "sarthoshop",
+  "version": "1.0.0",
+  "description": "Server for fake e-commerce website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SarthoraelEW/SarthoShop.git"
+  },
+  "keywords": [
+    "e-commerce"
+  ],
+  "author": "Sartho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SarthoraelEW/SarthoShop/issues"
+  },
+  "homepage": "https://github.com/SarthoraelEW/SarthoShop#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.1",
+    "multer": "^2.0.0-rc.1",
+    "nodemailer": "^6.7.2",
+    "nodemon": "^2.0.15",
+    "twilio": "^3.71.3",
+    "validator": "^13.7.0"
+  }
+}
