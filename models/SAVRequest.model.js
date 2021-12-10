@@ -19,6 +19,7 @@ const SAVRequestSchema = new mongoose.Schema(
     },
     message: {
       type: String,
+      maxlength: 1000,
       required: true
     },
     state: {

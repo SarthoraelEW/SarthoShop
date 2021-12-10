@@ -21,13 +21,12 @@ const ClientSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      validate: [isStrongPassword],
       required: true,
     },
     phoneNumber: {
       type: String,
       validate: [isMobilePhone],
-      default: "",
+      default: "+33700000000",
     },
     verifyPhoneNumber: {
       type: {
@@ -41,8 +40,9 @@ const ClientSchema = new mongoose.Schema(
         country: String,
         state: String,
         city: String,
-        street: String,
         zip: String,
+        numberAndStreet: String,
+        more: String
       },
       default: null,
     },
@@ -77,11 +77,11 @@ ClientSchema.pre("save", async function (next) {
 });
 
 ClientSchema.statics.login = async function (email, password) {
-  const user = await this.findOne({ email });
-  if (user) {
-    const auth = await bcrypt.compare(password, user.password);
+  const client = await this.findOne({ email });
+  if (client) {
+    const auth = await bcrypt.compare(password, client.password);
     if (auth) {
-      return user;
+      return client;
     }
     throw Error("incorrect password");
   }
