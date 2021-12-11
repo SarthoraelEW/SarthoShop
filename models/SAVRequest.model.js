@@ -24,7 +24,7 @@ const SAVRequestSchema = new mongoose.Schema(
     },
     state: {
       type: String,
-      required: "En attente"
+      default: "En attente"
     }
   }
 );

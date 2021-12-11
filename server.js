@@ -3,6 +3,8 @@ const cookieParser = require("cookie-parser");
 require("dotenv").config({ path: "./config/.env" });
 require('./config/db');
 const clientRoutes = require("./routes/client.routes");
+const articleRoutes = require("./routes/article.routes");
+const SAVRequestRoutes = require("./routes/SAVRequest.routes");
 const { checkClient, requireAuth } = require("./middlewares/auth.middleware");
 
 
@@ -21,6 +23,8 @@ app.get("/jwtid", requireAuth, (req, res) => {
 
 // routes
 app.use("/api/client", clientRoutes);
+app.use("/api/article", articleRoutes);
+app.use("/api/savrequest", SAVRequestRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Listening on port ${process.env.PORT}`);

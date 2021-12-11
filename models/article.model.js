@@ -5,14 +5,15 @@ const ArticleSchema = mongoose.Schema(
     name: {
       type: String,
       required: true,
+      unique: true,
       trim: true
     },
-    quantity: {
-      type: Number,
-      required: true
+    available: {
+      type: Boolean,
+      default: true
     },
-    type: {
-      type: String,
+    types: {
+      type: [String],
       required: true
     },
     price: {
@@ -28,7 +29,12 @@ const ArticleSchema = mongoose.Schema(
       default: []
     },
     sizes: {
-      type: [String],
+      type: [
+        {
+          size: String,
+          quantity: Number
+        }
+      ],
       default: []
     },
   },
