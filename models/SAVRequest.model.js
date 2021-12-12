@@ -14,7 +14,6 @@ const SAVRequestSchema = new mongoose.Schema(
     },
     phoneNumber: {
       type: String,
-      validate: [isMobilePhone],
       default: ""
     },
     message: {
@@ -22,9 +21,13 @@ const SAVRequestSchema = new mongoose.Schema(
       maxlength: 1000,
       required: true
     },
+    client: {
+      type: String,
+      default: null
+    },
     state: {
       type: String,
-      default: "En attente"
+      default: "waiting"
     }
   }
 );

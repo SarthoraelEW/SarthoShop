@@ -1,8 +1,14 @@
 const mongoose = require('mongoose');
+const { isEmail } = require('validator');
 
 const CommandSchema = new mongoose.Schema(
   {
-    client: {
+    email: {
+      type: String,
+      validate: [isEmail],
+      required: true
+    },
+    phoneNumber: {
       type: String,
       required: true
     },
@@ -13,6 +19,7 @@ const CommandSchema = new mongoose.Schema(
         city: String,
         street: String,
         zip: String,
+        more: String
       },
       required: true
     },
@@ -25,13 +32,22 @@ const CommandSchema = new mongoose.Schema(
       ],
       required: true
     },
-    state: {
-      type: String,
-      default: "En cours d'expédition"
-    },
     totalCost: {
       type: String,
       required: true
+    },
+    client: {
+      type: String,
+      default: ""
+    },
+    state: {
+      type: String,
+      default: "expedition"
+    },
+    instruction: {
+      type: String,
+      maxlength: 1000,
+      default: ""
     }
   },
   {
