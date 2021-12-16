@@ -27,7 +27,8 @@ const CommandSchema = new mongoose.Schema(
       type: [
         {
           article: String,
-          amount: Number
+          size: String,
+          quantity: Number
         }
       ],
       required: true

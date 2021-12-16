@@ -19,7 +19,7 @@ router.put('/update-types/:id', articleController.updateTypes);
 router.put('/update-price/:id', articleController.updatePrice);
 router.put('/update-description/:id', articleController.updateDescription);
 router.put('/update-available/:id', articleController.updateAvailable);
-router.patch('/update-sizes/:id', articleController.updateSizes);
+router.put('/update-sizes/:id', articleController.updateSizes);
 
 // Delete article
 router.delete('/delete-article/:id', articleController.deleteArticle);
