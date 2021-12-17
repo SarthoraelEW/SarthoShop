@@ -1,9 +1,19 @@
 import React from 'react';
+import Nav from '../components/Nav';
+import HomeBannery from '../components/Home/HomeBannery';
+import NewCollection from '../components/Home/NewCollection';
+import RecentProducts from '../components/Home/RecentProducts';
+import Footer from '../components/Footer';
+
 
 const Home = () => {
   return (
-    <div>
-      Home
+    <div className='home-page'>
+      <Nav />
+      <HomeBannery />
+      <NewCollection />
+      <RecentProducts />
+      <Footer />
     </div>
   );
 };

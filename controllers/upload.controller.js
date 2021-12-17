@@ -9,7 +9,6 @@ exports.uploadPhotos = async (req, res) => {
   try {
     const article = await ArticleModel.findById(req.params.id);
     const photos = await uploadFiles(req, article.photos.length);
-    console.log(photos);
 
     article.photos = article.photos.concat(photos);
     await article.save();

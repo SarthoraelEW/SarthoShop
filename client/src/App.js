@@ -2,9 +2,12 @@ import Routes from "./components/Routes/Index";
 import { UidContext } from "./components/AppContext";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { getClient } from "./actions/client.action";
 
 function App() {
   const [uid, setUid] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -17,7 +20,9 @@ function App() {
       .catch((err) => console.log("No token"));
     }
     fetchToken();
-  }, [uid]);
+
+    if (uid) dispatch(getClient(uid));
+  }, [uid, dispatch]);
 
   return (
     <UidContext.Provider value={uid}>

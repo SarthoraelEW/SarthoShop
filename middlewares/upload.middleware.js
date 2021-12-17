@@ -12,10 +12,12 @@ exports.uploadFiles = async (req, l) => {
           if (
             req.files[j].detectedMimeType != "image/jpg" &&
             req.files[j].detectedMimeType != "image/png" &&
-            req.files[j].detectedMimeType != "image/jpeg"
-          )
+            req.files[j].detectedMimeType != "image/jpeg" &&
+            req.files[j].detectedMimeType != "image/webp"
+          ) {
             throw Error("invalid file");
-          
+          }
+
           if (req.files[j].size > 5000000) throw Error("max size");
         } catch (err) {
           const errors = uploadErrors(err);
