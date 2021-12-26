@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getClient } from "./actions/client.action";
+import { getAllArticles } from "./actions/articles.action";
 
 function App() {
   const [uid, setUid] = useState(null);
@@ -23,6 +24,8 @@ function App() {
 
     if (uid) dispatch(getClient(uid));
   }, [uid, dispatch]);
+
+  dispatch(getAllArticles());
 
   return (
     <UidContext.Provider value={uid}>

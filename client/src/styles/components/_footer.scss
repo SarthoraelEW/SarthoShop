@@ -1,0 +1,67 @@
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  background-color: $color-header;
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1180px;
+    width: 100%;
+
+    i {
+      color: $purple;
+      font-size: 1.4rem;
+      margin-right: 20px;
+      cursor: pointer;
+
+      &:hover {
+        color: white;
+      }
+    }
+
+    .legals {
+      h3 {
+        font-family: $font-semi-bold;
+        color: $purple;
+        margin-bottom: 20px;
+      }
+
+      h5 {
+        font-family: $font-regular;
+        color: $active-color;
+        margin-bottom: 15px;
+        transition: color 0.2s ease;
+        cursor: pointer;
+
+        &:hover {
+          color: $purple;
+          transition: color 0.2s ease;
+        }
+      }
+    }
+  }
+}
+
+.copyright {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  h6 {
+    max-width: 1180px;
+    width: 100%;
+    color: gray;
+    font-family: $font-light;
+    font-size: 0.8rem;
+
+    span {
+      color: $purple;
+    }
+  }
+}

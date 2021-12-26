@@ -1,0 +1,45 @@
+@font-face {
+  font-family: "font-light";
+  src: url(./assets/fonts/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: "font-regular";
+  src: url(./assets/fonts/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: "font-semi-bold";
+  src: url(./assets/fonts/Poppins-SemiBold.ttf);
+}
+
+$font-light: "font-light", sans-serif;
+$font-regular: "font-regular", serif;
+$font-semi-bold: "font-semi-bold", serif;
+
+$color-header: #222222;
+$background-color: #f0f0f0;
+$active-color: #9b1359;
+$purple: #e50a7b;
+$error-color: #d64044;
+$border-color: #f9f9f9;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.error {
+  color: $error-color;
+}
+
+body {
+  background-color: $background-color;
+}

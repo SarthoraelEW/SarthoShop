@@ -1,0 +1,9 @@
+.video-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .video-model {
+    max-width: 1180px;
+  }
+}

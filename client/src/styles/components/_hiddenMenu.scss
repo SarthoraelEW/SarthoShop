@@ -1,0 +1,63 @@
+.hidden-menu {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  background-color: white;
+
+
+  .side-menu {
+    width: 30%;
+    right: 0%;
+    border-right: 1px solid $border-color;
+    text-align: right;
+
+    h2 {
+      font-family: $font-semi-bold;
+      margin-right: 20px;
+      margin-bottom: 5px;
+    }
+
+    li {
+      font-family: $font-regular;
+      margin-right: 100px;
+      margin-bottom: 10px;
+      cursor: pointer;
+
+      span {
+        font-size: 0.8rem;
+        padding-top: 3px;
+      }
+
+      &:hover {
+        color: $active-color
+      }
+    }
+  }
+
+  .recent-articles {
+    display: flex;
+    width: 70%;
+  }
+
+  .hidden-sub-menu {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(221, 221, 221);
+    padding-top: 20px;
+    
+    li {
+      margin-left: 50px;
+      text-align: center;
+      font-family: $font-regular;
+      width: 10%;
+      margin-bottom: 15px;
+      cursor: pointer;
+
+      &:hover {
+        color: $active-color
+      }
+    }
+  }
+}

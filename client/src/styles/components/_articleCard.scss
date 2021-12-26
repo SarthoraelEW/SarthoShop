@@ -1,0 +1,31 @@
+.article-card {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  cursor: pointer;
+
+  img {
+    height: 220px;
+    width: 160px;
+  }
+
+  h4 {
+    color: black;
+    font-family: $font-regular;
+    text-align: center;
+  }
+
+  h6 {
+    color: black;
+    font-family: $font-light;
+    text-align: center;
+  }
+
+  &:hover {
+    background-color: rgb(221, 221, 221);
+  }
+}

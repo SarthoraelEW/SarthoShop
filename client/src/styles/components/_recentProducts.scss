@@ -1,0 +1,65 @@
+.home-recent-products {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    max-width: 1180px;
+    height: 350px;
+
+    .all-products {
+      width: 20%;
+      height: 100%;
+      cursor: pointer;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 0%;
+      }
+
+      .button {
+        position: absolute;
+        top: 55%;
+        z-index: 3;
+
+        h1 {
+          background-color: $purple;
+          width: fit-content;
+          padding: 5px;
+          color: white;
+          font-family: $font-regular;
+        }
+
+        h4 {
+          color: white;
+          font-family: $font-regular;
+          font-size: 0.9rem;
+          margin-top: 5px;
+          margin-left: 10px;
+        }
+      }
+
+      .hover-transparent {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        background-color: rgba(0, 0, 0, 0.3);
+        transition: background-color 0.2s ease;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.6);
+          transition: background-color 0.2s ease;
+        }
+      }
+    }
+  }
+}
