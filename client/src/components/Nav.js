@@ -1,15 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UidContext } from "./AppContext";
 import HiddenMenu from "./HiddenMenu";
 
 const Nav = ({ page }) => {
   let navigate = useNavigate();
-  const uid = useContext(UidContext);
 
   const [showingHiddenMenu, setShowingHiddenMenu] = useState(false);
 
   const displayHiddenMenu = () => {
+    console.log("yo");
     var hiddenMenuContainer = document.getElementById("hidden-menu-container");
     console.log(hiddenMenuContainer);
     if (showingHiddenMenu) {
@@ -25,7 +24,7 @@ const Nav = ({ page }) => {
     <>
       <nav className="navbar">
         <img
-          src="./logo.jpg"
+          src={`${process.env.REACT_APP_PUBLIC_URL}./logo.jpg`}
           alt="logo"
           onClick={() => {
             navigate("/");
@@ -41,8 +40,10 @@ const Nav = ({ page }) => {
             ACCUEIL
           </li>
           <li
-            className={page === "PRODUCTS" ? "active" : ""}
-            onClick={() => {displayHiddenMenu()}}
+            className={page === "COLLECTIONS" ? "active" : ""}
+            onClick={() => {
+              displayHiddenMenu();
+            }}
           >
             TOUS LES PRODUITS
             <span class="material-icons-outlined">expand_more</span>
@@ -55,7 +56,13 @@ const Nav = ({ page }) => {
           >
             CONTACT
           </li>
-          <li>PONCE.TV</li>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.twitch.tv/ponce"
+          >
+            <li>PONCE.TV</li>
+          </a>
         </ul>
         <div className="icons">
           <span
@@ -66,20 +73,10 @@ const Nav = ({ page }) => {
           >
             shopping_cart
           </span>
-          {uid && (
-            <span
-              className="material-icons-outlined"
-              onClick={() => {
-                navigate("/client-edit");
-              }}
-            >
-              account_circle
-            </span>
-          )}
         </div>
       </nav>
       <div id="hidden-menu-container" className="hidden-menu-container hidden">
-        <HiddenMenu />
+        <HiddenMenu onChange={displayHiddenMenu} />
       </div>
     </>
   );

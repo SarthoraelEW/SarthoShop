@@ -1,0 +1,120 @@
+.savform-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+
+  .savform {
+    max-width: 1180px;
+    width: 100%;
+
+    h1 {
+      font-family: $font-semi-bold;
+      margin-bottom: 20px;
+    }
+
+    .form-container {
+      background-color: white;
+      padding-left: 10%;
+      padding-right: 10%;
+      padding-top: 5%;
+      padding-bottom: 5%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        font-family: $font-regular;
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+      }
+
+      #savrequest-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .error-info {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 20px;
+          padding: 10px;
+          border: 1px solid rgb(204, 204, 204);
+          border-radius: 5px;
+          background-color: #f2dede;
+
+          h4 {
+            color: $error-color;
+          }
+
+          span {
+            color: rgb(185, 185, 185);
+            font-size: 1rem;
+            margin-top: 3px;
+            cursor: pointer;
+
+            &:hover {
+              color: black;
+            }
+          }
+        }
+
+        input,
+        textarea {
+          background-color: #f4f4f4;
+          color: #555555;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          padding-left: 3px;
+          border: 1px solid rgb(204, 204, 204);
+          font-family: $font-regular;
+          margin-bottom: 20px;
+          transition: box-shadow 0.2s ease;
+
+          &::placeholder {
+            color: #555555;
+            font-family: $font-light;
+          }
+        }
+
+        .name-email {
+          display: flex;
+          justify-content: space-between;
+
+          #email {
+            margin-left: 10px;
+          }
+        }
+
+        #phone, #message {
+          width: 100%;
+        }
+
+        button {
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          color: white;
+          font-size: 1.3rem;
+          background-color: $active-color;
+          font-family: $font-semi-bold;
+          margin-top: 20px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #d982af;
+          }
+        }
+
+        .error-input {
+          border: 2px solid $error-color;
+          border-radius: 2px;
+        } 
+      }
+    }
+  }
+}

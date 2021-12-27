@@ -14,7 +14,7 @@ const textile = [
 ];
 const goodies = ["Mugs", "Jeux de cartes"];
 
-const HiddenMenu = () => {
+const HiddenMenu = ({ onChange }) => {
   let navigate = useNavigate();
 
   const articlesReducer = useSelector((state) => state.articlesReducer);
@@ -93,7 +93,14 @@ const HiddenMenu = () => {
     <div className="hidden-menu">
       <ul className="side-menu">
         <h2>TOUS LES PRODUITS</h2>
-        <li onClick={() => navigate("/collections/all")}>Tout</li>
+        <li
+          onClick={() => {
+            navigate("/collections/all");
+            onChange();
+          }}
+        >
+          Tout
+        </li>
         <li onClick={showTextileSubMenu}>
           Textile <span className="material-icons-outlined">chevron_right</span>
         </li>
@@ -110,7 +117,12 @@ const HiddenMenu = () => {
           {!isEmpty(subMenu) &&
             subMenu.map((category) => {
               return (
-                <li onClick={() => navigateToCollections(category)}>
+                <li
+                  onClick={() => {
+                    navigateToCollections(category);
+                    onChange();
+                  }}
+                >
                   {category}
                 </li>
               );

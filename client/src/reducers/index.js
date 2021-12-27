@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
-import clientReducer from "./client.reducer";
 import articlesReducer from "./articles.reducer";
+import SAVRequestsReducer from "./SAVRequests.reducer";
 
 export default combineReducers({
-  clientReducer, articlesReducer
+  articlesReducer, SAVRequestsReducer
 });

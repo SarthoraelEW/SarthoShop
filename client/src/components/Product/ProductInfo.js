@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ClientEdit = () => {
+const ProductInfo = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const ClientEdit = () => {
   );
 };
 
-export default ClientEdit;
+export default ProductInfo;

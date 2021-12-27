@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Login = () => {
+const ImageSlider = () => {
   return (
     <div>
-      Login
+      
     </div>
   );
 };
 
-export default Login;
+export default ImageSlider;

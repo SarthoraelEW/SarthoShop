@@ -1,0 +1,24 @@
+.collections-page {
+  .collections-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .collections {
+      max-width: 1180px;
+      width: 100%;
+      height: fit-content;
+
+      h1 {
+        font-family: $font-semi-bold;
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+
+      ul {
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+      }
+    }
+  }
+}
