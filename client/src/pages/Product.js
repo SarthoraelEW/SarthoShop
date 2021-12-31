@@ -13,8 +13,6 @@ const Product = () => {
 
   const article = articlesReducer.filter((article) => article.name === params.productName)[0];
 
-  console.log(article);
-
   return (
     <div className='product-page'>
       <Nav />

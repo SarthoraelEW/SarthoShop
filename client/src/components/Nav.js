@@ -8,9 +8,7 @@ const Nav = ({ page }) => {
   const [showingHiddenMenu, setShowingHiddenMenu] = useState(false);
 
   const displayHiddenMenu = () => {
-    console.log("yo");
     var hiddenMenuContainer = document.getElementById("hidden-menu-container");
-    console.log(hiddenMenuContainer);
     if (showingHiddenMenu) {
       setShowingHiddenMenu(false);
       hiddenMenuContainer.classList.add("hidden");
@@ -19,6 +17,15 @@ const Nav = ({ page }) => {
       hiddenMenuContainer.classList.remove("hidden");
     }
   };
+
+  window.addEventListener("click", (e) => {
+    if (
+      showingHiddenMenu &&
+      !document.getElementById("hidden-menu-container").contains(e.target) &&
+      !document.getElementsByClassName("navbar")[0].contains(e.target)
+    )
+      displayHiddenMenu();
+  });
 
   return (
     <>

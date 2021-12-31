@@ -1,1 +1,1 @@
-Add better errors for login (strong password...)
+Make the hidden menu disappear when you select a collections

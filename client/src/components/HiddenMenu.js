@@ -111,7 +111,7 @@ const HiddenMenu = ({ onChange }) => {
       <ul className="recent-articles">
         {!isEmpty(articles) &&
           articles.slice(0, 4).map((article) => {
-            return <ArticleCard article={article} key={article._id} />;
+            return <ArticleCard article={article} key={article._id} onClick={onChange} />;
           })}
         <ul id="hidden-sub-menu" className="hidden-sub-menu hidden">
           {!isEmpty(subMenu) &&
