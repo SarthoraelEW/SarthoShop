@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Cart from "../../pages/Cart";
+import Checkout from "../../pages/Checkout";
 import Collections from "../../pages/Collections";
 import Contact from "../../pages/Contact";
 import Home from "../../pages/Home";
@@ -15,6 +16,7 @@ const Index = () => {
         <Route path="/product/:productName" element={<Product />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </Router>
   );

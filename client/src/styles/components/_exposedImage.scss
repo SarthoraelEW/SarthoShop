@@ -1,0 +1,34 @@
+.exposed-img {
+  img {
+    width: 320px;
+    height: 480px;
+    cursor: zoom-in;
+  }
+}
+
+.fullscreen-img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  span {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 25px;
+    margin-right: 15px;
+    cursor: pointer;
+  }
+}
+
+.hidden {
+  display: none;
+}

@@ -4,7 +4,6 @@ const CarouselItem = (props) => {
   const { img, positionInCarousel, carouselPosition, handleClick, isSelected } =
     props;
 
-  console.log(isSelected);
   const positionIndex = positionInCarousel - carouselPosition;
 
   return (

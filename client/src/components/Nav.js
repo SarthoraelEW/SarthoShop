@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 import HiddenMenu from "./HiddenMenu";
+import Badge from "@mui/material/Badge";
+import { isEmpty } from "./Utils";
 
 const Nav = ({ page }) => {
   let navigate = useNavigate();
 
   const [showingHiddenMenu, setShowingHiddenMenu] = useState(false);
+  const [cartCookie, setCartCookie] = useCookies(["cart"]);
+
 
   const displayHiddenMenu = () => {
     var hiddenMenuContainer = document.getElementById("hidden-menu-container");
@@ -72,14 +77,21 @@ const Nav = ({ page }) => {
           </a>
         </ul>
         <div className="icons">
-          <span
-            className="material-icons-outlined"
-            onClick={() => {
-              navigate("/cart");
-            }}
+          <Badge
+            badgeContent=""
+            color="secondary"
+            variant="dot"
+            invisible={isEmpty(cartCookie)}
           >
-            shopping_cart
-          </span>
+            <span
+              className="material-icons-outlined"
+              onClick={() => {
+                navigate("/cart");
+              }}
+            >
+              shopping_cart
+            </span>
+          </Badge>
         </div>
       </nav>
       <div id="hidden-menu-container" className="hidden-menu-container hidden">

@@ -1,4 +1,5 @@
 import Routes from "./components/Routes/Index";
+import { CookiesProvider } from 'react-cookie';
 import { useDispatch } from "react-redux";
 import { getAllArticles } from "./actions/articles.action";
 
@@ -8,7 +9,9 @@ function App() {
   dispatch(getAllArticles());
 
   return (
-    <Routes />
+    <CookiesProvider>
+      <Routes />
+    </CookiesProvider>
   );
 }
 
