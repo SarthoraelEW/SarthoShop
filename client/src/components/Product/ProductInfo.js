@@ -1,16 +1,25 @@
-import React, { useState } from "react";
-import { useCookies } from 'react-cookie';
+import React, { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import { isEmpty } from "../Utils";
 import QuantityButton from "./QuantityButton";
 
 const ProductInfo = ({ article }) => {
   const [quantity, setQuantity] = useState(1);
-  const [displaySize, setDisplaySize] = useState(article.sizes[0].size);
 
-  const [cartCookie, setCartCookie] = useCookies(['cart']);
+  let startingSize = null;
+  if (!isEmpty(article.sizes)) {
+    startingSize = article.sizes[0].size;
+  }
+
+  const [displaySize, setDisplaySize] = useState(startingSize);
+
+  const [cartCookie, setCartCookie] = useCookies(["cart"]);
 
   const onQuantityChange = (quantity) => {
-    setQuantity(quantity);
+    if (quantity === 0)
+      setQuantity(1);
+    else
+      setQuantity(quantity);
   };
 
   const isOnSale = () => {
@@ -27,7 +36,11 @@ const ProductInfo = ({ article }) => {
 
   const addToCart = () => {
     if (isEmpty(cartCookie)) {
-      setCartCookie('cart', [{product: article.name, size: displaySize, quantity: quantity}], { path: '/' });
+      setCartCookie(
+        "cart",
+        [{ product: article.name, size: displaySize, quantity: quantity }],
+        { path: "/" }
+      );
     } else {
       let newCookie = cartCookie.cart;
       let found = false;
@@ -39,10 +52,18 @@ const ProductInfo = ({ article }) => {
         }
       });
       if (!found)
-        newCookie.push({product: article.name, size: displaySize, quantity: quantity});
-      setCartCookie('cart', newCookie, { path: '/' });
+        newCookie.push({
+          product: article.name,
+          size: displaySize,
+          quantity: quantity,
+        });
+      setCartCookie("cart", newCookie, { path: "/" });
     }
   };
+
+  useEffect(() => {
+    setDisplaySize(startingSize);
+  }, [startingSize]);
 
   return (
     <div className="product-info">
@@ -53,26 +74,33 @@ const ProductInfo = ({ article }) => {
       </div>
       <hr className="solid" />
       <div className="add-card-form">
-        <div>
-          <label>SIZE</label>
-          <br />
-          <select
-            onChange={(e) => setDisplaySize(e.target.value)}
-            value={displaySize}
-          >
-            {article.sizes.map((size, index) => {
-              return (
-                <option value={size.size} key={index}>
-                  {size.size}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-        <QuantityButton onChange={onQuantityChange} />
+        {!isEmpty(displaySize) && (
+          <div>
+            <label>SIZE</label>
+            <br />
+            <select
+              onChange={(e) => {
+                console.log("yo");
+                setDisplaySize(e.target.value);
+              }}
+              value={displaySize}
+            >
+              {article.sizes.map((size, index) => {
+                return (
+                  <option value={size.size} key={index}>
+                    {size.size}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+        )}
+        <QuantityButton onChange={onQuantityChange} mustBeSupThanOne={true} />
       </div>
       {isOnSale() ? (
-        <button className="saleon-button" onClick={addToCart}>AJOUTER AU PANER</button>
+        <button className="saleon-button" onClick={addToCart}>
+          AJOUTER AU PANIER
+        </button>
       ) : (
         <button className="soldout-button">ÉPUISÉ</button>
       )}

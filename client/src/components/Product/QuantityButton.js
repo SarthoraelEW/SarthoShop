@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { isEmpty } from "../Utils";
 
-const QuantityButton = ({ onChange, preQuantity }) => {
+const QuantityButton = ({ onChange, preQuantity, mustBeSupThanOne }) => {
   const [quantity, setQuantity] = useState(isEmpty(preQuantity) ? 1 : preQuantity);
 
   const incQuantity = () => {
@@ -10,11 +10,18 @@ const QuantityButton = ({ onChange, preQuantity }) => {
   };
 
   const decQuantity = () => {
-    if (quantity > 1) {
+    if (quantity === 1 && !mustBeSupThanOne) {
+      onChange(quantity - 1);
+    }
+    else if (quantity > 1) {
       onChange(quantity - 1);
       setQuantity(quantity - 1);
     }
   };
+
+  useEffect(() => {
+    setQuantity(preQuantity);
+  }, [preQuantity])
 
   return (
     <div className="quantity-button">

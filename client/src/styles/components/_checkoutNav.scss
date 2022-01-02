@@ -1,0 +1,27 @@
+.checkout-nav {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  h5 {
+    font-family: $font-light;
+    margin-right: 10px;
+    font-size: 0.8rem;
+  }
+
+  span {
+    font-size: 0.7rem;
+    margin-right: 10px;
+  }
+
+  .link {
+    color: $purple;
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $active-color;
+      transition: color 0.2s ease;
+    }
+  }
+}

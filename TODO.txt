@@ -1,1 +1,3 @@
 Make the hidden menu disappear when you select a collections
+Probleme when article does not have sizes
+bug when retire element from cart

@@ -37,10 +37,6 @@ const CommandSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    client: {
-      type: String,
-      default: ""
-    },
     state: {
       type: String,
       default: "expedition"

@@ -1,0 +1,92 @@
+.cart {
+  margin-top: 70px;
+  max-width: 1180px;
+  width: 100%;
+
+  ul {
+    li {
+      width: 100%;
+      height: 100%;
+      border-bottom: 1px solid rgb(160, 160, 160);
+    }
+
+    .last {
+      border-bottom: none;
+    }
+  }
+
+  h1 {
+    font-family: $font-semi-bold;
+    margin-bottom: 30px;
+  }
+
+  .cart-footer {
+    display: flex;
+    margin-top: 50px;
+
+    .instructions {
+      label {
+        color: rgb(73, 73, 73);
+        font-family: $font-regular;
+        font-size: 0.8rem;
+      }
+
+      textarea {
+        width: 560px;
+        height: 100px;
+        border: 1px solid rgb(151, 151, 151);
+      }
+    }
+
+    .payement {
+      text-align: right;
+
+      h2 {
+        margin: 0;
+        font-family: $font-semi-bold;
+      }
+
+      h5 {
+        font-family: $font-light;
+        color: #696969;
+        margin-bottom: 40px;
+      }
+
+      label {
+        font-family: $font-regular;
+        font-size: 0.8rem;
+        color: #525252;
+        margin-left: 5px;
+
+        .link {
+          color: $purple;
+          cursor: pointer;
+          transition: color 0.2s ease;
+
+          &:hover {
+            color: $active-color;
+            transition: color 0.2s ease;
+          }
+        }
+      }
+
+      button {
+        margin-top: 20px;
+        background-color: $purple;
+        padding: 10px;
+        transition: background-color 0.2s ease;
+        cursor: pointer;
+        color: white;
+        font-family: $font-semi-bold;
+        font-size: 1.2rem;
+        border-radius: 3px;
+        width: 60%;
+    
+        &:hover {
+          background-color: $active-color;
+          transition: background-color 0.2s ease;
+        }
+      }
+    }
+  }
+}

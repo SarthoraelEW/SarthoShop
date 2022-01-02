@@ -1,0 +1,47 @@
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  padding: 30px;
+
+  img {
+    width: 120px;
+    height: 180px;
+  }
+
+  .article-name {
+    font-family: $font-regular;
+  }
+
+  .article-price {
+    font-family: $font-light;
+    color: rgb(56, 56, 56);
+  }
+
+  .quantity-button-container {
+    margin-bottom: 20px;
+
+    label {
+      display: none;
+    }
+  }
+
+  .size {
+    font-family: $font-light;
+    color: rgb(56, 56, 56);
+    margin-bottom: 10px;
+  }
+
+  .link {
+    color: $purple;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    font-family: $font-regular;
+
+    &:hover {
+      color: $active-color;
+      transition: color 0.2s ease;
+    }
+  }
+}

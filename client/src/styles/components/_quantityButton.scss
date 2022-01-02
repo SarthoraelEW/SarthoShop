@@ -1,0 +1,42 @@
+.quantity-button {
+
+  label {
+    color: black;
+    font-family: $font-regular;
+    font-size: 0.8rem;
+  }
+
+  .buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      width: 30px;
+      background-color: #e9e9ed;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        transition: background-color 0.2s ease;
+        background-color: #bbbbbb;
+      }
+    }
+
+    input {
+      height: 50px;
+      width: 30px;
+      text-align: center;
+      font-family: $font-regular;
+      font-size: 1.3rem;
+      background-color: #e9e9ed;
+      border-left: 1px solid #cccccc;
+      border-right: 1px solid #cccccc;
+    }
+  }
+}

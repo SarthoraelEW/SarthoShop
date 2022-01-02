@@ -1,6 +1,5 @@
 const CommandModel = require("../models/command.model");
 const ArticleModel = require("../models/article.model");
-const ClientModel = require("../models/client.model");
 const ObjectId = require("mongoose").Types.ObjectId;
 const { isEmpty } = require("../utils/isEmpty.utils");
 
@@ -13,7 +12,6 @@ exports.createCommand = async (req, res) => {
     address,
     content,
     totalCost,
-    client,
     instruction,
   } = req.body;
 
@@ -62,23 +60,11 @@ exports.createCommand = async (req, res) => {
       address: address,
       content: content,
       totalCost: totalCost,
-      client: isEmpty(client) ? "" : client,
-      instruction: isEmpty(instruction) ? "" : client,
+      instruction: isEmpty(instruction) ? "" : instruction,
     });
 
     const command = await newCommand.save();
-
-    ClientModel.findByIdAndUpdate(
-      client,
-      {
-        $addToSet: { commands: command._id },
-      },
-      { new: true, upsert: true, setDefaultsOnInsert: true },
-      (err, docs) => {
-        if (!err) res.send(command);
-        else return res.status(500).json(err);
-      }
-    );
+    res.send(command);
   } catch (err) {
     return res.status(500).json(err);
   }
@@ -105,13 +91,6 @@ exports.getAllCommands = async (req, res) => {
 
 exports.getCommandsWithState = async (req, res) => {
   CommandModel.find({ state: req.params.state }, (err, docs) => {
-    if (!err) res.send(docs);
-    else return res.status(500).json(err);
-  });
-};
-
-exports.getCommandsByClient = async (req, res) => {
-  CommandModel.find({ client: req.params.id }, (err, docs) => {
     if (!err) res.send(docs);
     else return res.status(500).json(err);
   });
@@ -167,26 +146,11 @@ exports.deleteCommand = async (req, res) => {
   try {
     const command = await CommandModel.findById(req.params.id);
 
-    const client = command.client;
 
     await CommandModel.findByIdAndDelete(req.params.id);
 
-    if (!isEmpty(client)) {
-      ClientModel.findByIdAndUpdate(
-        client,
-        {
-          $pull: { commands: command._id },
-        },
-        { new: true, upsert: true, setDefaultsOnInsert: true },
-        (err, docs) => {
-          if (!err)
-            res.send("Command " + command._id + " succesfully deleted");
-          else return res.status(500).json(err);
-        }
-      );
-    } else {
-      res.send("Command " + command._id + " succesfully deleted");
-    }
+    
+    res.send("Command " + command._id + " succesfully deleted");
   } catch (err) {
     return res.status(500).send(err);
   }

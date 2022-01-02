@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { isEmpty } from "./Utils";
 
 const ArticleCard = ({ article, onClick }) => {
   let navigate = useNavigate();
@@ -9,7 +10,7 @@ const ArticleCard = ({ article, onClick }) => {
       className="article-card"
       onClick={() => {
         navigate("/product/" + article.name);
-        onClick();
+        !isEmpty(onClick) && onClick();
       }}
     >
       <img

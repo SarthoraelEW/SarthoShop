@@ -1,12 +1,11 @@
 const SAVRequestModel = require("../models/SAVRequest.model");
-const ClientModel = require("../models/client.model");
 const ObjectId = require("mongoose").Types.ObjectId;
 const { isEmpty } = require("../utils/isEmpty.utils");
 
 /************** Create SAVRequest **************/
 
 exports.sendSAVRequest = async (req, res) => {
-  const { name, email, message, phoneNumber, client } = req.body;
+  const { name, email, message, phoneNumber } = req.body;
 
   try {
     const newSAVRequest = new SAVRequestModel({
@@ -14,22 +13,10 @@ exports.sendSAVRequest = async (req, res) => {
       email: email,
       message: message,
       phoneNumber: isEmpty(phoneNumber) ? "" : phoneNumber,
-      client: isEmpty(client) ? "" : client,
     });
     const SAVRequest = await newSAVRequest.save();
-    if (!isEmpty(client)) {
-      ClientModel.findByIdAndUpdate(
-        client,
-        {
-          $addToSet: { SAVRequest: SAVRequest._id },
-        },
-        { new: true, upsert: true, setDefaultsOnInsert: true },
-        (err, docs) => {
-          if (!err) res.send(SAVRequest);
-          else return res.status(500).json(err);
-        }
-      );
-    }
+    if (!err) res.send(SAVRequest);
+    else return res.status(500).json(err);
   } catch (err) {
     return res.status(500).json(err);
   }
@@ -92,27 +79,8 @@ exports.deleteSAVRequest = async (req, res) => {
 
   try {
     const SAVRequest = await SAVRequestModel.findById(req.params.id);
-
-    const client = SAVRequest.client;
-
     await SAVRequestModel.findByIdAndDelete(req.params.id);
-
-    if (!isEmpty(client)) {
-      ClientModel.findByIdAndUpdate(
-        client,
-        {
-          $pull: { SAVRequest: SAVRequest._id },
-        },
-        { new: true, upsert: true, setDefaultsOnInsert: true },
-        (err, docs) => {
-          if (!err)
-            res.send("SAVRequest " + SAVRequest._id + " succesfully deleted");
-          else return res.status(500).json(err);
-        }
-      );
-    } else {
-      res.send("SAVRequest " + SAVRequest._id + " succesfully deleted");
-    }
+    res.send("SAVRequest " + SAVRequest._id + " succesfully deleted");
   } catch (err) {
     return res.status(500).send(err);
   }

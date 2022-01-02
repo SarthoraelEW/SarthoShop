@@ -81,7 +81,7 @@ const Nav = ({ page }) => {
             badgeContent=""
             color="secondary"
             variant="dot"
-            invisible={isEmpty(cartCookie)}
+            invisible={isEmpty(cartCookie.cart)}
           >
             <span
               className="material-icons-outlined"

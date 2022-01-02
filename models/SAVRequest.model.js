@@ -21,10 +21,6 @@ const SAVRequestSchema = new mongoose.Schema(
       maxlength: 1000,
       required: true
     },
-    client: {
-      type: String,
-      default: null
-    },
     state: {
       type: String,
       default: "waiting"
