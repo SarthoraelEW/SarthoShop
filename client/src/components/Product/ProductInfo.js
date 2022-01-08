@@ -80,7 +80,6 @@ const ProductInfo = ({ article }) => {
             <br />
             <select
               onChange={(e) => {
-                console.log("yo");
                 setDisplaySize(e.target.value);
               }}
               value={displaySize}

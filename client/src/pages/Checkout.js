@@ -39,9 +39,11 @@ const Checkout = () => {
           <h1>Boutique Ponce</h1>
           <CheckoutNav section={formSection} />
           {getFormSection()}
-          <h6>Tous droits réservés Boutique Ponce</h6>
+          <h6 className="checkout-footer">Tous droits réservés Boutique Ponce</h6>
         </div>
-        <CartResume />
+        <div className="cart-resume-container">
+          <CartResume />
+        </div>
       </div>
     </div>
   );

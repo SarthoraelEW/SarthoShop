@@ -8,7 +8,7 @@ import CartItem from "./CartItem";
 const CartContainer = () => {
   const navigate = useNavigate();
 
-  const [cookie, setCookie] = useCookies(["cart", "clientInformations"]);
+  const [cookie, setCookie] = useCookies(["cart", "command"]);
 
   const [instructions, setInstructions] = useState("");
   const [isChecked, setIsChecked] = useState(false);
@@ -45,21 +45,16 @@ const CartContainer = () => {
         "Vous devez lire et accepter nos conditions générales pour continuer."
       );
     } else {
-      let clientInformations = null;
-      if (isEmpty(cookie.clientInformations))
-        clientInformations = {
-          instructions: instructions,
-          email: "",
-          shippingMethod: "expedition",
-          address: null,
-          phone: "",
-          creditCard: null,
-        };
-      else {
-        clientInformations = cookie.clientInformations;
-        clientInformations.instructions = instructions;
-      }
-      setCookie("clientInformations", clientInformations, { path: "/" });
+      let command = {
+        instructions: instructions,
+        isClientInfoCompleted: false,
+        clientInformations: null,
+        shipping: null,
+        isShippingCompleted: false,
+        payement: null,
+        isPayementCompleted: false
+      };
+      setCookie("command", command, { path: "/" });
       navigate("/checkout/contact-informations");
     }
   };
