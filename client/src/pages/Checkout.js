@@ -24,7 +24,7 @@ const Checkout = () => {
       case "payement":
         return <PayementForm />;
 
-      case "review":
+      case "command-checking":
         return <CommandChecking />;
 
       default:

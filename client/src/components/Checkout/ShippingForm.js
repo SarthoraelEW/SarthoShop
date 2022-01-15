@@ -29,7 +29,7 @@ const ShippingForm = () => {
     command.isShippingCompleted = true;
     command.shipping = shippingOption;
     setCookies("command", command, { path: "/" });
-    navigate('/checkout/payement');
+    navigate("/checkout/payement");
   };
 
   return (
@@ -41,23 +41,52 @@ const ShippingForm = () => {
             {!isEmpty(command.clientInformations) &&
               command.clientInformations.email}
           </h5>
-          <h6 className="link-shipping">Modifier</h6>
+          <h6
+            className="link-shipping"
+            onClick={() => navigate("/checkout/contact-informations")}
+          >
+            Modifier
+          </h6>
         </div>
         <div className="resume-card-last">
           <label>Expédier à</label>
           <h5>{!isEmpty(command.clientInformations) && getAddress()}</h5>
-          <h6 className="link-shipping">Modifier</h6>
+          <h6
+            className="link-shipping"
+            onClick={() => navigate("/checkout/contact-informations")}
+          >
+            Modifier
+          </h6>
         </div>
       </div>
       <h2>Mode d'expédition</h2>
       <div className="shipping-options-container">
-        <div className="shipping-option" onClick={() => setShippingOption("relais")}>
-          <input type="radio" name="shipping_option" value="relais" checked={shippingOption === "relais"} />
-          <label>Livraison en Point Relais Collissimo (sélection du Point Relais après paiement)</label>
+        <div
+          className="shipping-option"
+          onClick={() => setShippingOption("relais")}
+        >
+          <input
+            type="radio"
+            name="shipping_option"
+            value="relais"
+            checked={shippingOption === "relais"}
+          />
+          <label>
+            Livraison en Point Relais Collissimo (sélection du Point Relais
+            après paiement)
+          </label>
           <h5>7,50€</h5>
         </div>
-        <div className="shipping-option-last" onClick={() => setShippingOption("domicile")}>
-          <input type="radio" name="shipping_option" value="domicile" checked={shippingOption === "domicile"} />
+        <div
+          className="shipping-option-last"
+          onClick={() => setShippingOption("domicile")}
+        >
+          <input
+            type="radio"
+            name="shipping_option"
+            value="domicile"
+            checked={shippingOption === "domicile"}
+          />
           <label>Colissimo Domicile sans signature</label>
           <h5>8,50€</h5>
         </div>
